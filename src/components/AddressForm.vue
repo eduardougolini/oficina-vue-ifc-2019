@@ -63,19 +63,22 @@ export default {
     },
     data() {
         return {
-        cep: "",
-        address: "",
-        number: "",
-        complement: "",
-        district: "",
-        city: "",
-        state: ""
+            cep: "",
+            address: "",
+            number: "",
+            complement: "",
+            district: "",
+            city: "",
+            state: ""
         };
     },
     methods: {
         goNext() {
             this.$v.$touch();
-            this.$router.push({ name: 'CompletionPage' });
+
+            if (! this.$v.$invalid) {
+                this.$router.push({ name: 'CompletionPage' });
+            }
         },
         getFormattedCep(cep) {
             return cep.replace('-', '');
