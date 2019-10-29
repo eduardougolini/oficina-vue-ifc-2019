@@ -1,4 +1,4 @@
-import ViacepService from '../../../services/viacep.service';
+import ViacepService from '../services/viacep.service';
 
 import * as Mutations from './mutationTypes';
 

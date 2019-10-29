@@ -2,12 +2,23 @@
     <div>
         <h2>Endereço cadastrado</h2>
         <img src="../assets/like.svg" />
+        <CustomButton @click="goBack" :text="'Voltar'" />
     </div>
 </template>
 
 <script>
+import CustomButton from '../components/CustomButton';
+
 export default {
-    name: 'CompletionPage'
+    name: 'CompletionPage',
+    components: {
+        CustomButton
+    },
+    methods: {
+        goBack() {
+            this.$router.push({ name: 'AddressPage' });
+        }
+    }
 }
 </script>
 

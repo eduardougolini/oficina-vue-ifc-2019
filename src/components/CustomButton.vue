@@ -1,12 +1,18 @@
 <template>
     <button type="submit" @click="$emit('click')">
-        Adicionar
+        {{ text }}
     </button>
 </template>
 
 <script>
 export default {
-    name: 'NextButton'
+    name: 'NextButton',
+    props: {
+        text: {
+            type: String,
+            required: true,
+        }
+    }
 }
 </script>
 

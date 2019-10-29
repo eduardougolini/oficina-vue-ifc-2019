@@ -44,38 +44,38 @@
             && $v.state.$invalid
         }"
     />
-    <NextButton @click="goNext" />
+    <CustomButton @click="goNext" :text="'Adicionar'" />
   </form>
 </template>
 
 <script>
 import { required, minLength } from "vuelidate/lib/validators";
 import { mapActions } from 'vuex';
+import { mapFields } from 'vuex-map-fields';
 
 import CustomInput from "./CustomInput";
-import NextButton from "./NextButton";
-import { OFICINA } from '../store/modules';
+import CustomButton from "./CustomButton";
 
 export default {
     name: "AddressForm",
     components: {
         CustomInput,
-        NextButton
+        CustomButton
     },
-    data() {
-        return {
-            cep: "",
-            address: "",
-            number: "",
-            complement: "",
-            district: "",
-            city: "",
-            state: ""
-        };
+    computed: {
+        ...mapFields([
+            'cep',
+            'address',
+            'number',
+            'complement',
+            'district',
+            'city',
+            'state'
+        ]),
     },
     methods: {
-        ...mapActions(OFICINA, [
-            'fetchCepData',
+        ...mapActions([
+            'fetchCepData'
         ]),
         goNext() {
             this.$v.$touch();

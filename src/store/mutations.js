@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { updateField } from 'vuex-map-fields';
 
 import * as Types from './mutationTypes';
 
@@ -8,4 +9,5 @@ export default {
             Vue.set(state.addressData, key, value);
         }
     },
+    updateField
 }
