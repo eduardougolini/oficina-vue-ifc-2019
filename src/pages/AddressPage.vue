@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AddressForm from '../components/AddressForm';
+import AddressForm from '../containers/AddressForm';
 
 export default {
     name: 'AddressPage',

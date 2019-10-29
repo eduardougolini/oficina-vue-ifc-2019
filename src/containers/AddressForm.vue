@@ -53,8 +53,8 @@ import { required, minLength } from "vuelidate/lib/validators";
 import { mapActions } from 'vuex';
 import { mapFields } from 'vuex-map-fields';
 
-import CustomInput from "./CustomInput";
-import CustomButton from "./CustomButton";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
 
 export default {
     name: "AddressForm",
