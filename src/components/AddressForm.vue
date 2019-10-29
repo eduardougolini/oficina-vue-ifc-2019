@@ -50,10 +50,11 @@
 
 <script>
 import { required, minLength } from "vuelidate/lib/validators";
+import { mapActions } from 'vuex';
 
 import CustomInput from "./CustomInput";
 import NextButton from "./NextButton";
-import viacep from '../services/viacep.service';
+import { OFICINA } from '../store/modules';
 
 export default {
     name: "AddressForm",
@@ -73,6 +74,9 @@ export default {
         };
     },
     methods: {
+        ...mapActions(OFICINA, [
+            'fetchCepData',
+        ]),
         goNext() {
             this.$v.$touch();
 
@@ -92,13 +96,13 @@ export default {
                 return;
             }
 
-            const { data } = await viacep.getCepInfo(this.cep);
+            const cepInfo = await this.fetchCepData(this.cep);
             
-            this.address = data.logradouro;
-            this.city = data.localidade;
-            this.state = data.uf;
-            this.district = data.bairro;
-            this.complement = data.complemento;
+            this.address = cepInfo.logradouro;
+            this.city = cepInfo.localidade;
+            this.state = cepInfo.uf;
+            this.district = cepInfo.bairro;
+            this.complement = cepInfo.complemento;
         }
     },
     validations: {
